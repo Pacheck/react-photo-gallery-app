@@ -93,7 +93,7 @@ input {
   width: 100%;
 }
 
-@media only screen and (max-width: 767px)  {
+@media only screen and (max-width: 767px) {
   body {
     padding-top: 2em;
   }
@@ -103,7 +103,7 @@ input {
   }
 }
 
-@media only screen and (min-width: 768px)  {
+@media only screen and (min-width: 768px) {
   body {
     padding-top: 4em;
   }
@@ -113,11 +113,20 @@ input {
     margin: auto;
   }
 
+  .container p {
+    display: block;
+    background: #438bbd;
+    border-radius: 3px;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+
   .main-nav ul {
     display: flex;
     justify-content: center;
   }
-  
+
   .main-nav li {
     margin: 10px;
     width: 100px;

@@ -1,12 +1,13 @@
-import React, { Component } from "react";
-import "./css/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import apiKey from "./config";
-import axios from "axios";
+import React, { Component } from 'react';
+import './css/App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import apiKey from './config';
+import axios from 'axios';
 
 // App components
-import Search from "./components/Search";
-import PhotoContainer from "./components/PhotoContainer";
+import Search from './components/Search';
+import PhotoContainer from './components/PhotoContainer';
+import Nav from './components/Nav';
 
 class App extends Component {
   constructor() {
@@ -20,9 +21,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.performSearch("cats");
-    this.performSearch("dogs");
-    this.performSearch("computers");
+    this.performSearch('cats');
+    this.performSearch('dogs');
+    this.performSearch('computers');
   }
 
   performSearch = (query) => {
@@ -31,17 +32,17 @@ class App extends Component {
         `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
       )
       .then((response) => {
-        if (query === "cats") {
+        if (query === 'cats') {
           this.setState({
             catPhotos: response.data.photos.photo,
           });
         }
-        if (query === "dogs") {
+        if (query === 'dogs') {
           this.setState({
             dogPhotos: response.data.photos.photo,
           });
         }
-        if (query === "computers") {
+        if (query === 'computers') {
           this.setState({
             computerPhotos: response.data.photos.photo,
           });
@@ -51,7 +52,7 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        console.log("Error fetching and parsing data", error);
+        console.log('Error fetching and parsing data', error);
       });
   };
 
@@ -66,16 +67,17 @@ class App extends Component {
               element={
                 <>
                   <Search onSearch={this.performSearch} />
+                  <Nav onSearch={this.performSearch} />
                   <PhotoContainer data={this.state.photos} />
                 </>
               }
             />
-            <Route
+            {/* <Route
               path="/cats"
               element={
                 <>
                   <Search onSearch={this.performSearch} />
-                  <PhotoContainer data={this.state.catPhotos} />
+                  <PhotoContainer data={this.state.photos} />
                 </>
               }
             />
@@ -85,7 +87,7 @@ class App extends Component {
               element={
                 <>
                   <Search onSearch={this.performSearch} />
-                  <PhotoContainer data={this.state.dogPhotos} />
+                  <PhotoContainer data={this.state.photos} />
                 </>
               }
             />
@@ -95,10 +97,10 @@ class App extends Component {
               element={
                 <>
                   <Search onSearch={this.performSearch} />
-                  <PhotoContainer data={this.state.computerPhotos} />
+                  <PhotoContainer data={this.state.photos} />
                 </>
               }
-            />
+            /> */}
           </Routes>
         </BrowserRouter>
       </div>

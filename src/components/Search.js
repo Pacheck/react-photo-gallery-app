@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import { useNavigate } from "react-router-dom";
-import Nav from "./Nav";
+// import Nav from './Nav';
 
 class Search extends Component {
   state = {
-    searchText: "",
+    searchText: '',
   };
 
   onSearchChange = (e) => {
@@ -42,7 +42,7 @@ class Search extends Component {
             </svg>
           </button>
         </form>
-        <Nav />
+        {/* <Nav /> */}
       </div>
     );
   }
